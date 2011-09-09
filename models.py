@@ -8,7 +8,7 @@ class News(models.Model):
     url = models.URLField(blank=True)
     date = models.DateTimeField(blank=True)
     is_published = models.BooleanField()
-    feed = models.ForeignKey('Feed')
+    feed = models.ForeignKey('Feed', blank=True, null=True)
 
     def __unicode__(self):
         return self.title
