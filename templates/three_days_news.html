@@ -1,0 +1,10 @@
+{% for col in cols %}
+<div class="column">
+    <h2>{{ col.date }}</h2>
+    <ul class="list">
+        {% for news in col.news %}
+        <li><a href="{{ news.url }}">{{ news.title }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endfor %}
