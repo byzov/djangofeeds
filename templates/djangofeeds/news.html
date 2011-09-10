@@ -1,0 +1,24 @@
+{% extends "djangofeeds/base.html" %}
+
+{% block content %}
+    <h1>Лента</h1>
+    {% for day in days %}
+    <div class="link-block block">
+        <h2 {% ifequal day.date '256' %}class="party"{% endifequal %}>День {{ day.date }}</h2>
+        <ul class="list">
+            {% for item in day.news %}
+            <li><a href="{{ item.url }}">{{ item.title|safe }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+    <div class="pagination">
+        {% if news.has_previous %}
+            <a href="?page={{ news.previous_page_number }}">&larr;</a>
+        {% endif %}
+
+        {% if news.has_next %}
+            <a href="?page={{ news.next_page_number }}">&rarr;</a>
+        {% endif %}
+    </div>
+{% endblock %}

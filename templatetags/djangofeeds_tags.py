@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
-from django import template
 from datetime import date, timedelta
+from django import template
+
 from djangofeeds.models import News
 
 register = template.Library()
 
 @register.simple_tag
 def three_days_news():
+    """
+    Shows news for last three days
+    """
     cols = []
     today = date.today()
     start_date = False
@@ -22,6 +26,6 @@ def three_days_news():
             'news': news,
         })
         start_date = end_date
-    t = template.loader.get_template('three_days_news.html')
+    t = template.loader.get_template('djangofeeds/tags/three_days_news.html')
     c = template.Context({'cols': cols})
     return t.render(c)
