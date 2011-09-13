@@ -1,6 +1,6 @@
 {% for col in cols %}
 <div class="column">
-    <h2>{{ col.date }}</h2>
+    <h2 {% if col.is_party_day %}class="party"{% endif %}>{{ col.date }}</h2>
     <ul class="list">
         {% for news in col.news %}
         <li><a href="{{ news.url }}">{{ news.title }}</a></li>
