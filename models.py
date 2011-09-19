@@ -42,7 +42,7 @@ class Feed(models.Model):
                 new = News()
                 new.title = item.title
                 new.url = item.link
-                new.date = datetime.fromtimestamp(mktime(item.date_parsed))
+                new.date = datetime.now()
                 new.is_published = self.default_published_flag
                 new.feed = self
                 new.save()
